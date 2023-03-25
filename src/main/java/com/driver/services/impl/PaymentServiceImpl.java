@@ -43,7 +43,7 @@ public class PaymentServiceImpl implements PaymentService {
         //make the spot occupied
         //spot.setOccupied(true);
 
-        paymentRepository2.save(payment);
+        reservationRepository2.save(reservation);
         return payment;
     }
 }
