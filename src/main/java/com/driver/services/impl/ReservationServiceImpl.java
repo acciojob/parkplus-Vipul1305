@@ -66,7 +66,8 @@ public class ReservationServiceImpl implements ReservationService {
         user.getReservationList().add(reservation);
         parkingLot.getSpotList().add(minPriceSpot);
 
-        reservationRepository3.save(reservation);
+        userRepository3.save(user);
+        spotRepository3.save(minPriceSpot);
         return reservation;
     }
     public int getNumOfWheels(SpotType spotType){
