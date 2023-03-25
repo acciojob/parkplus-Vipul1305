@@ -60,7 +60,7 @@ public class Spot {
         this.pricePerHour = pricePerHour;
     }
 
-    public boolean getOccupied() {
+    public boolean isOccupied() {
         return occupied;
     }
 

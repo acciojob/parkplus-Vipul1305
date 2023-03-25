@@ -36,7 +36,7 @@ public class ReservationServiceImpl implements ReservationService {
         // find spot which is not occupied and spotType is larger or equal to require type.
         List<Spot> availableSpot = new ArrayList<>();
         for(Spot spot: spotList){
-            if(!spot.getOccupied() && getNumOfWheels(spot.getSpotType()) >= numberOfWheels){
+            if(!spot.isOccupied() && getNumOfWheels(spot.getSpotType()) >= numberOfWheels){
                 availableSpot.add(spot);
             }
         }
