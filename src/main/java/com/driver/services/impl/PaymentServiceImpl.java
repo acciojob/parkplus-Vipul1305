@@ -33,14 +33,17 @@ public class PaymentServiceImpl implements PaymentService {
             throw new Exception("Payment mode not detected");
         }
         // now make payment
-        Payment payment = reservation.getPayment();
+        Payment payment = new Payment();
         payment.setPaymentCompleted(true);
         payment.setPaymentMode(paymentMode);
         payment.setReservation(reservation);
 
-        //make the spot occupied
-        spot.setOccupied(true);
+        reservation.setPayment(payment);
 
-        return paymentRepository2.save(payment);
+        //make the spot occupied
+        //spot.setOccupied(true);
+
+        paymentRepository2.save(payment);
+        return payment;
     }
 }

@@ -59,17 +59,15 @@ public class ReservationServiceImpl implements ReservationService {
         reservation.setUser(user);
         reservation.setSpot(minPriceSpot);
 
-        Payment payment = new Payment();
-        payment.setPaymentCompleted(false);
-        payment.setReservation(reservation);
-
-        reservation.setPayment(payment);
-
         //minPriceSpot.setOccupied(true);
         minPriceSpot.getReservationList().add(reservation);
-        user.getReservationList().add(reservation);
+        minPriceSpot.setOccupied(true);
 
-        return reservationRepository3.save(reservation);
+        user.getReservationList().add(reservation);
+        parkingLot.getSpotList().add(minPriceSpot);
+
+        reservationRepository3.save(reservation);
+        return reservation;
     }
     public int getNumOfWheels(SpotType spotType){
         if(spotType.equals(SpotType.TWO_WHEELER)){
@@ -77,6 +75,6 @@ public class ReservationServiceImpl implements ReservationService {
         }else if (spotType.equals(SpotType.FOUR_WHEELER)){
             return 4;
         }
-        return 20;
+        return Integer.MAX_VALUE;
     }
 }
